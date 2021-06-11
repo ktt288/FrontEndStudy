@@ -1,6 +1,7 @@
 # ページロード過程
 ## 1. HTMLをパースしている最中にscriptエレメントが出現したときどうなる？
 - [デモページ](https://www.ktsuchiy.work/index.html)
+- js/css/画像が少しずつだけ存在するシンプルなページ
 - scriptエレメント出現時の動作をわかりやすくするため、HTMLを少し細工
 - 細工したHTMLは以下の通り。
   ```
@@ -32,7 +33,7 @@
     - scriptエレメントの下行実行時にアラートを発生させる -> HTMLパースの再開タイミングをわかりやすくする。
 - （ポイント3）
     - DOMContentLoaded / loadイベントのタイイングを把握するため、このタイミングでもアラートを発生させる。
-- [デモ実行！！！](https://www.ktsuchiy.work/index_js_delay.html)
+- [デモ実行！！！](https://www.ktsuchiy.work/index_js_delay.html)...注意: シークレットモードでリンク実行..
 - デモの結果より、、、scriptエレメントが出現すると以下の動作となる！！
     - script.jsを取得する。（このデモでは5秒要する）
     - script.jsを実行する。（実行した旨のアラート表示）
@@ -68,7 +69,7 @@
     ```
 - （ポイント1）
     - script.jsの記述場所をbody最下部とする。
-- [デモ実行！](https://www.ktsuchiy.work/index_js_delay_last.html)
+- [デモ実行！](https://www.ktsuchiy.work/index_js_delay_last.html)...注意: シークレットモードでリンク実行..
 - デモの結果より、、、
     - 初期描画は速くなった！
     - script.jsの実行、DOMContentLoaded、Loadは遅い
@@ -99,7 +100,7 @@
     ```
 - （ポイント1）
     - async！！
-- [デモ実行！](https://www.ktsuchiy.work/index_js_delay_async.html)
+- [デモ実行！](https://www.ktsuchiy.work/index_js_delay_async.html)...注意: シークレットモードでリンク実行..
 - デモの結果より、、、
     - 初期描画は変わらず速い
     - DOMContentLoadedも速くなった
@@ -135,7 +136,7 @@
     ```
 - （ポイント1）
     - defer！！
-- [デモ実行！](https://www.ktsuchiy.work/index_js_delay_defer.html)
+- [デモ実行！](https://www.ktsuchiy.work/index_js_delay_defer.html)...注意: シークレットモードでリンク実行..
 - デモの結果より、、、
     - script.js取得し始めるタイミングが速い（body最下部記述の場合に比べ）
     - 違いはそれだけ..
