@@ -145,3 +145,13 @@
 - デモの結果より、、、
     - script.js取得し始めるタイミングが速い（body最下部記述の場合に比べ）
     - 違いはそれだけ..
+
+## 5. おまけ
+- CSSの取得に時間がかかるとどうなる？
+- [デモ実行！](https://www.ktsuchiy.work/index_css_delay.html)
+- CSSの取得、パース完了までHTMLパースが止まる...
+
+## 6. おまけ2
+- CSSの取得に時間がかかる＆CSSエレメントがbody最下部にあるとどうなる？
+- [デモ実行！](https://www.ktsuchiy.work/index_css_delay_last.html)
+- よくあるダメなサイトになってしまう...
