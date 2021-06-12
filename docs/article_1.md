@@ -145,13 +145,48 @@
 - デモの結果より、、、
     - script.js取得し始めるタイミングが速い（body最下部記述の場合に比べ）
     - 違いはそれだけ..
-
 ## 5. おまけ
+- asyncとdeferの違いをもう少し深く
+- 細工したHTMLは以下の通り。
+  ```
+  <html>
+      <head>
+        <script>
+          window.addEventListener("DOMContentLoaded", function() {
+          console.log("DOMContentLoaded");
+          });
+          window.addEventListener("load", function() {
+          console.log("load");
+          });
+        </script>
+          <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <title>テストページ</title>
+          <link rel="stylesheet" href="main.css">
+          <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+          <script type="text/javascript" src="script_4.js" defer></script>
+          <script>console.log("defer実行しつつ、後のパース再開");</script>
+          <script type="text/javascript" src="script_5.js" async></script>
+          <script>console.log("async実行しつつ、後のパース再開");</script>
+          <script type="text/javascript" src="script_6.js?delay=5"></script>
+      </head>
+      <body>
+    ```
+- （ポイント）
+    - defer、async、defer/asyncなしのscriptをheadタグ内に順に並べる
+    - defer/asyncなしのみ、script.jsのレスポンスを悪く（5秒）にしておく
+    - 各イベントハンドラはconsolelog出力にしておく
+- [デモ実行！](https://www.ktsuchiy.work/index_js_async.html)
+- デモの結果より、、、
+  - deferとasyncともに、後続のHTMLパースをブロックしない（再確認）
+  - asyncはダウンロードできたらすぐに実行する（実行タイミングや実行順序のコントロールが不可能）
+  - deferはダウンロードできてもすぐに実行しない。DOMContentLoadedの直前（HTMLパースが終わり、DOMContentLoadedまでやることがなくなったら）に実行される（実行タイミングや実行順序のコントロールが可能）
+## 6. おまけ2
 - CSSの取得に時間がかかるとどうなる？
 - [デモ実行！](https://www.ktsuchiy.work/index_css_delay.html)
 - CSSの取得、パース完了までHTMLパースが止まる...
 
-## 6. おまけ2
+## 7. おまけ3
 - CSSの取得に時間がかかる＆CSSエレメントがbody最下部にあるとどうなる？
 - [デモ実行！](https://www.ktsuchiy.work/index_css_delay_last.html)
 - よくあるダメなサイトになってしまう...
